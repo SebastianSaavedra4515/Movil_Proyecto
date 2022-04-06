@@ -13,9 +13,12 @@ public class PLayer : MonoBehaviour
     public Image vidaImage;
     public float vidaMax = 100;
     public Text EnemigosText;
+    [SerializeField] Text Score;
     public float enemigos;
+    [SerializeField] GameObject Slash;
     [SerializeField] SpawnEnemigos spawn1;
     [SerializeField] SpawnEnemigos spawn2;
+    public int shot=0;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,37 +28,45 @@ public class PLayer : MonoBehaviour
     }
     public void Golpeleft()
     {
-        AnimPlayer.SetTrigger("Left");
-        Collider2D[] objetos = Physics2D.OverlapCircleAll(left.position,Radio);
-        Debug.Log("ok");
-        
-        foreach (Collider2D colisionador in objetos)
+        if(shot< 2)
         {
-            if (colisionador.CompareTag("EnemigoL"))
-            {
-                
-                colisionador.GetComponent<RobotLeft>().vivo = false;
-            }
+            AnimPlayer.SetTrigger("Left");
+            Slash.transform.localScale = new Vector3(1, 1, 1);
+            shot++;
+            StartCoroutine(esperarleft());
         }
+
     }
 
     public void GolpeRigth()
     {
-        AnimPlayer.SetTrigger("Rigth");
-        Collider2D[] objetos = Physics2D.OverlapCircleAll(rigth.position, Radio);
-        foreach (Collider2D colisionador in objetos)
+        if (shot < 2)
         {
-            if (colisionador.CompareTag("EnemigoR"))
-            {
-                colisionador.GetComponent<Robot>().vivo = false;
-            }
+            AnimPlayer.SetTrigger("Rigth");
+            Slash.transform.localScale = new Vector3(-1, 1, 1);
+            shot++;
+            StartCoroutine(esperarRigth());
         }
+
+    }
+    IEnumerator esperarRigth()
+    {
+        yield return new WaitForSeconds(0.2f);
+
+        Instantiate(Slash, rigth.position, rigth.rotation);
+    }
+    IEnumerator esperarleft()
+    {
+        yield return new WaitForSeconds(0.2f);
+        
+        Instantiate(Slash, left.position, left.rotation);
     }
     // Update is called once per frame
     void Update()
     {
         vidaImage.fillAmount = vida / vidaMax;
         EnemigosText.text = "Enemigos :" +enemigos;
+        Score.text = "Score:" + puntos;
     }
     private void OnDrawGizmos()
     {

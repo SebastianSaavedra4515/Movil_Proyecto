@@ -30,7 +30,7 @@ public class Robot : MonoBehaviour
             Morir();
         }
     }
-    void Morir()
+    public void Morir()
     {
         AnimRobot.SetBool("vida",false);
         
@@ -38,8 +38,9 @@ public class Robot : MonoBehaviour
     }
     IEnumerator Esperar()
     {
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.35f);
         jugador.enemigos--;
+        jugador.puntos+=10;
         gameObject.SetActive(false);
     }
     private void OnTriggerEnter2D(Collider2D collision)

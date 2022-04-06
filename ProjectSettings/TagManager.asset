@@ -6,6 +6,7 @@ TagManager:
   tags:
   - EnemigoL
   - EnemigoR
+  - Muro
   layers:
   - Default
   - TransparentFX
