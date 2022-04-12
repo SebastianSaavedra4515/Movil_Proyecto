@@ -14,11 +14,13 @@ public class PLayer : MonoBehaviour
     public float vidaMax = 100;
     public Text EnemigosText;
     [SerializeField] Text Score;
+    [SerializeField] Text Slashs;
     public float enemigos;
     [SerializeField] GameObject Slash;
     [SerializeField] SpawnEnemigos spawn1;
     [SerializeField] SpawnEnemigos spawn2;
-    public int shot=0;
+    
+    public int disp=2;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,11 +30,11 @@ public class PLayer : MonoBehaviour
     }
     public void Golpeleft()
     {
-        if(shot< 2)
+        if(disp > 0)
         {
             AnimPlayer.SetTrigger("Left");
             Slash.transform.localScale = new Vector3(1, 1, 1);
-            shot++;
+            disp--;
             StartCoroutine(esperarleft());
         }
 
@@ -40,11 +42,11 @@ public class PLayer : MonoBehaviour
 
     public void GolpeRigth()
     {
-        if (shot < 2)
+        if (disp > 0)
         {
             AnimPlayer.SetTrigger("Rigth");
             Slash.transform.localScale = new Vector3(-1, 1, 1);
-            shot++;
+            disp--;
             StartCoroutine(esperarRigth());
         }
 
@@ -67,6 +69,8 @@ public class PLayer : MonoBehaviour
         vidaImage.fillAmount = vida / vidaMax;
         EnemigosText.text = "Enemigos :" +enemigos;
         Score.text = "Score:" + puntos;
+        
+        Slashs.text="="+ disp;
     }
     private void OnDrawGizmos()
     {

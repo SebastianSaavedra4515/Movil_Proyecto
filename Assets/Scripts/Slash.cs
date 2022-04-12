@@ -46,7 +46,9 @@ public class Slash : MonoBehaviour
     }
     public void Morir()
     {
-        jugador.shot--;
-        Destroy(gameObject);
+        
+            jugador.disp++;
+            Destroy(gameObject);
+        
     }
 }

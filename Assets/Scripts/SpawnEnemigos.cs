@@ -8,7 +8,9 @@ public class SpawnEnemigos : MonoBehaviour
     List<GameObject> Enemis;
     int count = 0;
     float tiempo = 0;
-    public float timemax;
+     float timemax;
+    public float min=5;
+    public float max = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,7 @@ public class SpawnEnemigos : MonoBehaviour
             if(count<Enemigos)
             {
                 transform.GetChild(count).gameObject.SetActive(true);
+                timemax = Random.RandomRange(min,max);
                 count++;
             }
             

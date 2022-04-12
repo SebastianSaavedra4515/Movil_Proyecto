@@ -40,7 +40,7 @@ public class Robot : MonoBehaviour
     {
         yield return new WaitForSeconds(0.35f);
         jugador.enemigos--;
-        jugador.puntos+=10;
+        jugador.puntos+=Random.RandomRange(10,30);
         gameObject.SetActive(false);
     }
     private void OnTriggerEnter2D(Collider2D collision)
