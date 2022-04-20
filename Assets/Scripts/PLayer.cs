@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class PLayer : MonoBehaviour
 {
     Animator AnimPlayer;
@@ -19,11 +20,12 @@ public class PLayer : MonoBehaviour
     [SerializeField] GameObject Slash;
     [SerializeField] SpawnEnemigos spawn1;
     [SerializeField] SpawnEnemigos spawn2;
-    
+    GameObject ScoreMana;
     public int disp=2;
     // Start is called before the first frame update
     void Start()
     {
+        ScoreMana = GameObject.FindGameObjectWithTag("ManageScore");
         enemigos = spawn1.Enemigos + spawn2.Enemigos;
         vida = vidaMax;
         AnimPlayer = GetComponent<Animator>();
@@ -49,7 +51,7 @@ public class PLayer : MonoBehaviour
             disp--;
             StartCoroutine(esperarRigth());
         }
-
+        
     }
     IEnumerator esperarRigth()
     {
@@ -71,6 +73,11 @@ public class PLayer : MonoBehaviour
         Score.text = "Score:" + puntos;
         
         Slashs.text="="+ disp;
+        ScoreMana.GetComponent<ScoreManager>().ScoreReal = puntos;
+        if (vida <= 0 || enemigos<=0)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
     }
     private void OnDrawGizmos()
     {

@@ -8,6 +8,7 @@ TagManager:
   - EnemigoR
   - Muro
   - Bono
+  - ManageScore
   layers:
   - Default
   - TransparentFX
