@@ -9,6 +9,14 @@ public class CambiarScena : MonoBehaviour
     {
         SceneManager.LoadScene(scena);
     }
+    public void SetActive(GameObject pbject)
+    {
+        pbject.SetActive(true);
+    }
+    public void setDesactive(GameObject pbject)
+    {
+        pbject.SetActive(false);
+    }
     // Start is called before the first frame update
     void Start()
     {

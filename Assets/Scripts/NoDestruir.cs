@@ -18,11 +18,12 @@ public class NoDestruir : MonoBehaviour
     private void Awake()
     {
         var noDestruirEntreScenas = FindObjectsOfType<NoDestruir>();
-        if(noDestruirEntreScenas.Length>1)
+        if(noDestruirEntreScenas.Length>2)
         {
             Destroy(gameObject);
             return;
         }
+        Debug.Log("ok");
         DontDestroyOnLoad(gameObject);
     }
 }
