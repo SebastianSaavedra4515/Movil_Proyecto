@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Slash : MonoBehaviour
+public class SlashCargado : MonoBehaviour
 {
     Rigidbody2D rigi;
     [SerializeField] float velocidad = 2;
@@ -17,7 +17,7 @@ public class Slash : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.localScale.x>0)
+        if (transform.localScale.x > 0)
         {
             rigi.velocity = Vector2.left * velocidad * Time.deltaTime;
         }
@@ -28,29 +28,29 @@ public class Slash : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag=="EnemigoL")
+        if (collision.tag == "EnemigoL")
         {
             collision.GetComponent<RobotLeft>().vivo = false;
-            Morir();
+            Matar();
             jugador.puntos += Random.RandomRange(10, 30);
         }
-        
+
         if (collision.tag == "EnemigoR")
         {
             collision.GetComponent<Robot>().vivo = false;
-            Morir();
+            Matar();
             jugador.puntos += Random.RandomRange(10, 30);
         }
         if (collision.tag == "Muro")
         {
-            Morir();
+            Destroy(gameObject);
         }
     }
-    public void Morir()
+    public void Matar()
     {
+
+        jugador.disp=2;
         
-            jugador.disp++;
-            Destroy(gameObject);
-        
+
     }
 }

@@ -20,7 +20,7 @@ public class NoDestruir : MonoBehaviour
         var noDestruirEntreScenas = FindObjectsOfType<NoDestruir>();
         if(noDestruirEntreScenas.Length>2)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
             return;
         }
         Debug.Log("ok");

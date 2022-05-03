@@ -11,10 +11,11 @@ public class SpawnEnemigos : MonoBehaviour
      float timemax;
     public float min=5;
     public float max = 10;
+    [SerializeField] GameObject Enemi;
     // Start is called before the first frame update
     void Start()
     {
-        Enemigos = transform.childCount;
+        
      
     }
 
@@ -26,12 +27,11 @@ public class SpawnEnemigos : MonoBehaviour
         Debug.Log(tiempo);
         if (tiempo>=timemax)
         {
-            if(count<Enemigos)
-            {
-                transform.GetChild(count).gameObject.SetActive(true);
+
+            Instantiate(Enemi, transform);
                 timemax = Random.RandomRange(min,max);
                 count++;
-            }
+            
             
             tiempo = 0;
         }

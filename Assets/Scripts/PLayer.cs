@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class PLayer : MonoBehaviour
 {
-    Animator AnimPlayer;
+    public Animator AnimPlayer;
     public float vida=100;
     public int puntos;
     [SerializeField] float Radio;
@@ -18,6 +18,7 @@ public class PLayer : MonoBehaviour
     [SerializeField] Text Slashs;
     public float enemigos;
     [SerializeField] GameObject Slash;
+    [SerializeField] GameObject SlashCargado;
     [SerializeField] SpawnEnemigos spawn1;
     [SerializeField] SpawnEnemigos spawn2;
     GameObject ScoreMana;
@@ -39,9 +40,18 @@ public class PLayer : MonoBehaviour
             disp--;
             StartCoroutine(esperarleft());
         }
-
     }
+    public void GolpeleftCargado()
+    {
 
+        if (disp == 2)
+        {
+            AnimPlayer.SetTrigger("Left");
+            Slash.transform.localScale = new Vector3(1, 1, 1);
+            disp = disp - 2;
+            StartCoroutine(esperarleftCargado());
+        }
+    }
     public void GolpeRigth()
     {
         if (disp > 0)
@@ -51,7 +61,19 @@ public class PLayer : MonoBehaviour
             disp--;
             StartCoroutine(esperarRigth());
         }
-        
+
+    }
+    public void GolpeRigthCargado()
+    {
+
+        if (disp == 2)
+        {
+            AnimPlayer.SetTrigger("Rigth");
+            Slash.transform.localScale = new Vector3(-1, 1, 1);
+            disp = disp - 2;
+            StartCoroutine(esperarRigthCargado());
+        }
+
     }
     IEnumerator esperarRigth()
     {
@@ -65,6 +87,18 @@ public class PLayer : MonoBehaviour
         
         Instantiate(Slash, left.position, left.rotation);
     }
+    IEnumerator esperarRigthCargado()
+    {
+        yield return new WaitForSeconds(0.2f);
+
+        Instantiate(SlashCargado, rigth.position, rigth.rotation);
+    }
+    IEnumerator esperarleftCargado()
+    {
+        yield return new WaitForSeconds(0.2f);
+
+        Instantiate(SlashCargado, left.position, left.rotation);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -74,7 +108,9 @@ public class PLayer : MonoBehaviour
         
         Slashs.text="="+ disp;
         ScoreMana.GetComponent<ScoreManager>().ScoreReal = puntos;
-        if (vida <= 0 || enemigos<=0)
+        ScoreMana.GetComponent<ScoreManager>().Scores.Add(puntos);
+
+        if (vida <= 0)
         {
             SceneManager.LoadScene("GameOver");
         }

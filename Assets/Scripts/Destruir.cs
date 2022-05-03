@@ -7,10 +7,11 @@ public class Destruir : MonoBehaviour
 {
     GameObject ScoreMana;
     public Text Score;
+    public Text BestScore;
     // Start is called before the first frame update
     public void Des()
     {
-        Destroy(ScoreMana);
+        
     }
     void Start()
     {
@@ -21,5 +22,6 @@ public class Destruir : MonoBehaviour
     void Update()
     {
         Score.text = "Score:" + ScoreMana.GetComponent<ScoreManager>().ScoreReal;
+        BestScore.text = "Best_Score:" + ScoreMana.GetComponent<ScoreManager>().BestScores;
     }
 }

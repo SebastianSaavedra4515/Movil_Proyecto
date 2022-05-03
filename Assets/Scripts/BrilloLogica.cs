@@ -11,6 +11,7 @@ public class BrilloLogica : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Brillo = GameObject.FindGameObjectWithTag("Brillo").GetComponent<SpriteRenderer>();
         slide.value = PlayerPrefs.GetFloat("Brillo", 0.1f);
         Brillo.color = new Color(Brillo.color.r, Brillo.color.g, Brillo.color.b, slide.value);
     }
