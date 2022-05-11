@@ -1084,6 +1084,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb38b79853066c41b5596d391d7bf74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AnimPlayer: {fileID: 0}
   vida: 100
   puntos: 0
   Radio: 0.2
@@ -1181,7 +1182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   control: {fileID: 1231672660}
-  TiempoCarga: 5
+  TiempoCarga: 2.5
 --- !u!1 &1245578034
 GameObject:
   m_ObjectHideFlags: 0

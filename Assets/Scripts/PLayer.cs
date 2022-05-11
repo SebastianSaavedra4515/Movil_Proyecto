@@ -16,6 +16,7 @@ public class PLayer : MonoBehaviour
     public Text EnemigosText;
     [SerializeField] Text Score;
     [SerializeField] Text Slashs;
+    
     public float enemigos;
     [SerializeField] GameObject Slash;
     [SerializeField] GameObject SlashCargado;
@@ -44,10 +45,10 @@ public class PLayer : MonoBehaviour
     public void GolpeleftCargado()
     {
 
-        if (disp == 2)
+        if (disp >= 2)
         {
             AnimPlayer.SetTrigger("Left");
-            Slash.transform.localScale = new Vector3(1, 1, 1);
+            SlashCargado.transform.rotation = new Quaternion(0, 0, 1, 0);
             disp = disp - 2;
             StartCoroutine(esperarleftCargado());
         }
@@ -58,6 +59,7 @@ public class PLayer : MonoBehaviour
         {
             AnimPlayer.SetTrigger("Rigth");
             Slash.transform.localScale = new Vector3(-1, 1, 1);
+           
             disp--;
             StartCoroutine(esperarRigth());
         }
@@ -66,10 +68,10 @@ public class PLayer : MonoBehaviour
     public void GolpeRigthCargado()
     {
 
-        if (disp == 2)
+        if (disp >= 2)
         {
             AnimPlayer.SetTrigger("Rigth");
-            Slash.transform.localScale = new Vector3(-1, 1, 1);
+            SlashCargado.transform.rotation = new Quaternion(0, 0, 0, 0);
             disp = disp - 2;
             StartCoroutine(esperarRigthCargado());
         }
@@ -91,13 +93,13 @@ public class PLayer : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
 
-        Instantiate(SlashCargado, rigth.position, rigth.rotation);
+        Instantiate(SlashCargado, rigth.position, SlashCargado.transform.rotation);
     }
     IEnumerator esperarleftCargado()
     {
         yield return new WaitForSeconds(0.2f);
 
-        Instantiate(SlashCargado, left.position, left.rotation);
+        Instantiate(SlashCargado, left.position, SlashCargado.transform.rotation);
     }
     // Update is called once per frame
     void Update()
@@ -107,8 +109,8 @@ public class PLayer : MonoBehaviour
         Score.text = "Score:" + puntos;
         
         Slashs.text="="+ disp;
-        ScoreMana.GetComponent<ScoreManager>().ScoreReal = puntos;
-        ScoreMana.GetComponent<ScoreManager>().Scores.Add(puntos);
+        //ScoreMana.GetComponent<ScoreManager>().ScoreReal = puntos;
+        //ScoreMana.GetComponent<ScoreManager>().Scores.Add(puntos);
 
         if (vida <= 0)
         {

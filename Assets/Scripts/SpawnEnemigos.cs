@@ -24,7 +24,7 @@ public class SpawnEnemigos : MonoBehaviour
     {
         
         tiempo += Time.deltaTime;
-        Debug.Log(tiempo);
+        //Debug.Log(tiempo);
         if (tiempo>=timemax)
         {
 
