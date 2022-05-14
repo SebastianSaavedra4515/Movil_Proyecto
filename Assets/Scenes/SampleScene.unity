@@ -639,6 +639,7 @@ MonoBehaviour:
   min: 3
   max: 6
   Enemi: {fileID: 6182304822976390045, guid: 781db7af77e6fa446bb2f8c7151218cd, type: 3}
+  jugador: {fileID: 0}
 --- !u!4 &601806046
 Transform:
   m_ObjectHideFlags: 0
@@ -809,6 +810,7 @@ MonoBehaviour:
   min: 5
   max: 10
   Enemi: {fileID: 8819822859180704489, guid: 9238170db892bce448f1c23ad30ba618, type: 3}
+  jugador: {fileID: 1231672660}
 --- !u!4 &774315923
 Transform:
   m_ObjectHideFlags: 0

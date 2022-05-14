@@ -22,11 +22,11 @@ public class Robot : MonoBehaviour
     {
         if (vivo == true)
         {
-            rigi.velocity=Vector2.left * velocidad * Time.deltaTime;
+            transform.Translate(Vector3.left * velocidad * Time.deltaTime);
         }
         if (vivo == false)
         {
-            rigi.velocity = new Vector2(0, 0);
+           
             Morir();
         }
     }
@@ -40,8 +40,8 @@ public class Robot : MonoBehaviour
     {
         yield return new WaitForSeconds(0.35f);
         jugador.enemigos--;
-    
-        gameObject.SetActive(false);
+
+        Destroy(gameObject);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

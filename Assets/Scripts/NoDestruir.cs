@@ -18,7 +18,7 @@ public class NoDestruir : MonoBehaviour
     private void Awake()
     {
         var noDestruirEntreScenas = FindObjectsOfType<NoDestruir>();
-        if(noDestruirEntreScenas.Length>2)
+        if(noDestruirEntreScenas.Length>3)
         {
             //Destroy(gameObject);
             return;

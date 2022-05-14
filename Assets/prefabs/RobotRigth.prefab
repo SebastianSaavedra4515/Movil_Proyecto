@@ -165,4 +165,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vivo: 1
-  velocidad: 50
+  velocidad: 0.7

@@ -212,10 +212,9 @@ GameObject:
   - component: {fileID: 81316120}
   - component: {fileID: 81316119}
   - component: {fileID: 81316121}
-  - component: {fileID: 81316122}
   m_Layer: 0
   m_Name: Musica_Fondo
-  m_TagString: ManageScore
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -342,21 +341,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a283cbee8b8e7f418eedfbbea645238, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &81316122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 81316118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26f771c6df23bac4683c2ba65376b1d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ScoreReal: 0
-  BestScores: 0
-  Scores: 
 --- !u!1 &217878064
 GameObject:
   m_ObjectHideFlags: 0

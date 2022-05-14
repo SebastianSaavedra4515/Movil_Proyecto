@@ -22,12 +22,12 @@ public class PLayer : MonoBehaviour
     [SerializeField] GameObject SlashCargado;
     [SerializeField] SpawnEnemigos spawn1;
     [SerializeField] SpawnEnemigos spawn2;
-    GameObject ScoreMana;
+    ScoreManager ScoreMana;
     public int disp=2;
     // Start is called before the first frame update
     void Start()
     {
-        ScoreMana = GameObject.FindGameObjectWithTag("ManageScore");
+        ScoreMana = GameObject.FindGameObjectWithTag("ManageScore").GetComponent<ScoreManager>();
         enemigos = spawn1.Enemigos + spawn2.Enemigos;
         vida = vidaMax;
         AnimPlayer = GetComponent<Animator>();
@@ -114,7 +114,11 @@ public class PLayer : MonoBehaviour
 
         if (vida <= 0)
         {
+            ScoreMana.AñadirPuntaje(puntos);
+            ScoreMana.ScoreReal = puntos;
+            ScoreMana.MayorScore();
             SceneManager.LoadScene("GameOver");
+            
         }
     }
     private void OnDrawGizmos()
